@@ -1,0 +1,50 @@
+Matla Life Daily Ops - Upload Checklist
+
+Frontend core files (required)
+- Daily-Ops.html
+- Ops.js
+- styles_2.css
+- manifest.json
+- service-worker.js
+- favicon.ico
+
+Branding / logo assets (required)
+- matla-life-logo2.png
+- new-matla-logo.png
+- matla-life-logo.png
+- matla-logo.png
+- matla-logo (1).png
+- matla-logo-transparent.png
+- matla-logo-transparent1.png
+- Capital-Legacy.png
+
+PWA assets (required)
+- pwa/icon-192.png
+- pwa/icon-512.png
+- pwa/apple-touch-icon-152.png
+- pwa/apple-touch-icon-167.png
+- pwa/apple-touch-icon-180.png
+- pwa/splash-1125x2436.png
+- pwa/splash-1242x2688.png
+- pwa/splash-1668x2388.png
+- pwa/splash-2048x2732.png
+
+Forms / documents referenced by app
+- Broker Authority 2026 (2) (1)-1.pdf
+- MATLA LIFE JFA TRACKER SHEET 1.pdf  (currently missing in this folder)
+
+Optional legacy page (only if you still use it)
+- JFA_Register.html
+- JFA.js
+
+Backend (required for DB, forgot-password emails, secure login API)
+- backend/package.json
+- backend/package-lock.json
+- backend/src/server.js
+- backend/.env (create from backend/.env.example)
+- backend/Dockerfile (if using Docker deployment)
+
+Notes
+- Do NOT upload backend/node_modules. Run npm install on the server.
+- Keep file names exactly the same (hosting is case-sensitive).
+- If you deploy under a subfolder, keep all these files in the same relative structure.
