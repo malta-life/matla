@@ -1,0 +1,37 @@
+{
+  "name": "Matla Life Daily Ops",
+  "short_name": "Matla JFA",
+  "id": "/daily-ops",
+  "start_url": "Daily-Ops.html?v=64",
+  "scope": "/",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "display": "standalone",
+  "orientation": "any",
+  "lang": "en-ZA",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "finance"],
+  "prefer_related_applications": false,
+  "background_color": "#0f1419",
+  "theme_color": "#0f1419",
+  "description": "Matla Life JFA daily operations dashboard.",
+  "icons": [
+    {
+      "src": "pwa/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
