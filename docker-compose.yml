@@ -1,0 +1,60 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: jfa_secure
+      POSTGRES_USER: jfa_user
+      POSTGRES_PASSWORD: change_me_db_password
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jfa_user -d jfa_secure"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  pgadmin:
+    image: dpage/pgadmin4:8
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@matla.co.za
+      PGADMIN_DEFAULT_PASSWORD: change_me_pgadmin_password
+      PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: "True"
+      PGADMIN_CONFIG_CONSOLE_LOG_LEVEL: "30"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+  mailpit:
+    image: axllent/mailpit:latest
+    restart: unless-stopped
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+
+  api:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    ports:
+      - "8081:8080"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./:/app/static:ro
+
+volumes:
+  pg_data:
+  pgadmin_data:
